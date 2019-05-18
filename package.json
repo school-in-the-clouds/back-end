@@ -1,0 +1,22 @@
+{
+  "name": "back-end",
+  "version": "1.0.0",
+  "description": "School In The Cloud Back-end",
+  "main": "index.js",
+  "scripts": {
+    
+    "server": "nodemon index.js"
+  },
+  "repository": "https://github.com/school-in-the-clouds/back-end.git",
+  "author": "Brandon Allison <brandona8128@outlook.com>",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^8.0.0",
+    "express": "^4.17.0",
+    "jest": "^24.8.0",
+    "knex": "^0.17.0-next3",
+    "nodemon": "^1.19.0",
+    "sqlite3": "^4.0.8"
+  }
+}
