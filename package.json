@@ -10,6 +10,7 @@
   "author": "Brandon Allison <brandona8128@outlook.com>",
   "license": "MIT",
   "dependencies": {
+    "axios": "^0.18.0",
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "dotenv": "^8.0.0",
@@ -18,6 +19,7 @@
     "jest": "^24.8.0",
     "jsonwebtoken": "^8.5.1",
     "knex": "^0.17.0-next3",
+    "morgan": "^1.9.1",
     "nodemon": "^1.19.0",
     "sqlite3": "^4.0.8"
   }

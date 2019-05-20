@@ -1,8 +1,8 @@
-require('dotenv').config(); // load .env variables
+const express = require('express')
+const apiRoutes = require('./api/apiRoutes')
+const server = express()
+server.get('/', (req,res)=>{res.status(200).send("Here is the server")})
+server.use('/api', apiRoutes)
+server.use('/uploads', express.static(__dirname + '/public'))
 
-const server = require('./api/server.js');
-
-const port = process.env.PORT || 5000;
-server.listen(port, () => {
-  console.log(`\n=== Server listening on port ${port}\n`);
-});
+server.listen((process.env.PORT || 5000),()=>{console.log('API running on port')})
