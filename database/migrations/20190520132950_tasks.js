@@ -8,6 +8,8 @@ exports.up = function(knex, Promise) {
   
       tbl.string("description", 255)
         .notNullable()
+
+     tbl.boolean("task completed").defaultTo("false")
   
       tbl.integer('user_id')
         .references('id')

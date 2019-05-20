@@ -36,7 +36,6 @@ router.get('/:id', authenticate, (req,res)=>{
   db('users').where('id', id).where('role', 'student').first().then(users=>{res.status(200).json(users)}).catch(err=>{res.status(500).json({message:"Error trying to GET user!"})})
 })
 
-
 router.get('/volunteer/:id',authenticate,  (req,res)=>{
   const id = req.params.id
   db('users').where('id', id).where('role', 'volunteer').first().then(users=>{res.status(200).json(users)}).catch(err=>{res.status(500).json({message:"Error trying to GET user!"})})
@@ -131,6 +130,7 @@ function register(req, res) {
               name: userData.name,
               role:userData.role,
               email:userData.email,
+              country:userData.country,
               phone:userData.phone,
               user_id: userData.id
             })
