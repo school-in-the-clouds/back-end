@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken');
 
 const jwtKey =
   process.env.JWT_SECRET ||
-    'add a .env file to root of project with the JWT_SECRET variable';
+    "keep it secret, keep it safe, don't tell anyone";
 
 // quickly see what this file exports
 module.exports = {
@@ -12,7 +12,7 @@ module.exports = {
 // implementation details
 
 function checkRole(req, res, next) {
-  const token = req.get('Authorization');
+  const token = req.get('authorization');
   if (token) {
     console.log('token')
     jwt.verify(token, jwtKey, (err, decoded) => {
