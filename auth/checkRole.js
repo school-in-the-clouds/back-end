@@ -4,12 +4,11 @@ const jwtKey =
   process.env.JWT_SECRET ||
     "keep it secret, keep it safe, don't tell anyone";
 
-// quickly see what this file exports
+
 module.exports = {
   checkRole,
 };
 
-// implementation details
 
 function checkRole(req, res, next) {
   const token = req.get('authorization');
