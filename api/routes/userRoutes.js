@@ -39,6 +39,7 @@ router.put('/:id', authenticate,(req,res)=>{
       name: req.body.name,
       role: req.body.role,
       email: req.body.email,
+      country: req.body.country,
       phone: req.body.phone
     })
     .then(numUpdated=>{

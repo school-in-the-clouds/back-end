@@ -1,7 +1,7 @@
 exports.up = function(knex, Promise) {
     return knex.schema.createTable('profiles', function(tbl){
       tbl.increments()
-  
+
       tbl.string("username", 255)
       .references('username')
       .inTable('users')
@@ -17,7 +17,11 @@ exports.up = function(knex, Promise) {
       tbl.string("email", 255)
       .references('email')
       .inTable('users')
-  
+
+      tbl.string("country", 255)
+       .references('country')
+       .inTable('users')
+
       tbl.string("phone", 128)
       .references('phone')
       .inTable('users')
