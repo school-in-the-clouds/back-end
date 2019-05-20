@@ -22,11 +22,12 @@ router.get('/byVolunteer/:id',authenticate, (req,res)=>{
 })
 router.put('/:id', authenticate, checkRole,(req,res)=>{
   const id = req.params.id
-  db('task')
+  db('tasks')
     .where('id', id)
     .update({
       title: req.body.title,
       description: req.body.description,
+      user_id: req.body.user_id
     })
     .then(numUpdated=>{
       if(numUpdated!=0){
@@ -36,7 +37,7 @@ router.put('/:id', authenticate, checkRole,(req,res)=>{
       }
     })
     .catch(err=>{
-      res.status(500).json({message:"Internal server error"})
+      res.status(500).json({message: err.message})
     })
 
 })
