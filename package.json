@@ -4,7 +4,9 @@
   "description": "School In The Cloud Back-end",
   "main": "index.js",
   "scripts": {
-    "server": "nodemon index.js"
+    "server": "nodemon index.js",
+    "start" : "node index.js"
+
   },
   "repository": "https://github.com/school-in-the-clouds/back-end.git",
   "author": "Brandon Allison <brandona8128@outlook.com>",
@@ -15,6 +17,7 @@
     "cors": "^2.8.5",
     "dotenv": "^8.0.0",
     "express": "^4.17.0",
+    "faker": "^4.1.0",
     "helmet": "^3.18.0",
     "jest": "^24.8.0",
     "jsonwebtoken": "^8.5.1",
