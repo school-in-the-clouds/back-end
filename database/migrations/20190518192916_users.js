@@ -17,7 +17,10 @@ exports.up = function(knex, Promise) {
 
     tbl.string("email", 255)
       .notNullable()
-      
+
+    tbl.string("country", 255)
+    .notNulable
+
     tbl.string("phone", 128)
       .notNullable()
   })
