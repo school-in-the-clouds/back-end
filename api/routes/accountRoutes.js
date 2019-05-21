@@ -18,14 +18,15 @@ router.post('/register', register);
 router.post('/login', login);
 
 
-
 router.get('/', authenticate, (req,res)=>{
   db('users').where('role', 'student').then(users=>{res.status(200).json(users)}).catch(err=>{res.status(404).json({message:"No users found!"})})
 })
+
 router.get('/volunteer/', authenticate,  (req,res)=>{
   console.log('in volunteer')
   db('users').where('role', 'volunteer').then(users=>{res.status(200).json(users)}).catch(err=>{res.status(404).json({message:"No users found!"})})
 })
+
 router.get('/admin/', authenticate,  (req,res)=>{
     console.log('in admin')
     db('users').where('role', 'admin').then(users=>{res.status(200).json(users)}).catch(err=>{res.status(404).json({message:"No users found!"})})
@@ -125,15 +126,9 @@ function register(req, res) {
           console.log(token)
           const userData = user[0]
           db('profiles').insert(
-            {
-              username:userData.username,
-              name: userData.name,
-              role:userData.role,
-              email:userData.email,
-              country:userData.country,
-              phone:userData.phone,
-              user_id: userData.id
-            })
+            
+              credentials
+            )
             .then(user=>{res.status(201).json({id:userData.id, role:userData.role, token})})
             .catch(err=>{res.status(500).json({message:"Error inserting into profiles"})})
       }).catch(err=>{res.status(500).send(err)})

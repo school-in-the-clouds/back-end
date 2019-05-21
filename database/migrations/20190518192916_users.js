@@ -1,15 +1,16 @@
 exports.up = function(knex, Promise) {
   return knex.schema.createTable('users', function(tbl){
+
     tbl.increments()
 
     tbl.string("username", 255)
       .unique()
       .notNullable()
 
-    tbl.string("password", 255)
+    tbl.string("name", 255)
       .notNullable()
 
-    tbl.string("name", 255)
+    tbl.string("password", 255)
       .notNullable()
 
     tbl.string("role", 255)
