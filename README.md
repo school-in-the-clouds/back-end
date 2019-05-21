@@ -15,16 +15,12 @@ The default port is 5000.
 
 **Tables**
 [Users](#Users) |
-[Tasks](#Trips)
+[Tasks](#Tasks)
 
-**Endpoints**
-[Users](#users-1) |
-[Tasks](#trips) |
-[Profiles](#accounts) |
 
 # Schemata
 
-### Users
+# Users
 
 There are three kinds of users, 'student', 'volunteer' and admin. An admin has access to the full CRUD functionality for all tasks; a volunteer has read-only access, except for their own account information. Admin has access to all routes. All fields are required:
 
@@ -52,7 +48,7 @@ _Example of a User row:_
 
 ---
 
-### Tasks
+# Tasks
 
 The fields for tasks give the registered admins flexibility so they can tailor descriptions to suit their own needs. As with the users, all fields are required.
 
@@ -70,7 +66,7 @@ _Example of a Task Row:_
 
 | id  |    title      |  description  | completed  |    user_id    |
 | --- | ------------- | ------------- | ---------- |  ------------ |
-| 3   |   Meeting     | Meeting at 2  |    false   |      1        |
+|  3  |   Meeting     | Meeting at 2  |    false   |        1      |
 
 
 [^Back to Top^](#school-in-the-cloud-backend)
@@ -91,9 +87,9 @@ The request body must include all fields:
 
 ```javascript
 {
-	title:  "Meeting", //required
-	description:  "Meeting with Mike at 3",
-	taskcompleted:  "0",//set to false by defualt
+    title:  "Meeting", //required
+    description:  "Meeting with Mike at 3",
+    taskcompleted:  "0",//set to false by defualt
     user_id: 1,//user_id of the assigned colunteer
 
 },
@@ -177,13 +173,13 @@ The username
 
 ```javascript
 {
-	username:  "",
-	password:  "",
-	name:  "",
-	role:  "",
+    username:  "",
+    password:  "",
+    name:  "",
+    role:  "",
     email:  "",
     country: "",
-	phone:  "",
+    phone:  "",
 }
 ```
 
