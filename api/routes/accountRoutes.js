@@ -19,6 +19,10 @@ router.post('/login', login);
 
 
 router.get('/', authenticate, (req,res)=>{
+  db('users').then(users=>{res.status(200).json(users)}).catch(err=>{res.status(404).json({message:"No users found!"})})
+})
+
+router.get('/student/', authenticate, (req,res)=>{
   db('users').where('role', 'student').then(users=>{res.status(200).json(users)}).catch(err=>{res.status(404).json({message:"No users found!"})})
 })
 
@@ -32,7 +36,7 @@ router.get('/admin/', authenticate,  (req,res)=>{
     db('users').where('role', 'admin').then(users=>{res.status(200).json(users)}).catch(err=>{res.status(404).json({message:"No users found!"})})
   })
 
-router.get('/:id', authenticate, (req,res)=>{
+router.get('/student/:id', authenticate, (req,res)=>{
   const id = req.params.id
   db('users').where('id', id).where('role', 'student').first().then(users=>{res.status(200).json(users)}).catch(err=>{res.status(500).json({message:"Error trying to GET user!"})})
 })
@@ -52,6 +56,7 @@ router.put('/:id',  authenticate,(req,res)=>{
   console.log('in put')
   console.log(req.body)
   const id = req.params.id
+
 
   db('users')
     .where('id', id)
