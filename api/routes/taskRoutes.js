@@ -12,14 +12,17 @@ router.get('/', authenticate, (req,res)=>{
   db('tasks').then(tasks=>{res.status(200).json(tasks)}).catch(err=>res.status(404).json({message:"No tasks found!"}))
 
 })
+
 router.get('/:id',authenticate, (req,res)=>{
   const id = req.params.id
   db('tasks').where('id', id).then(tasks=>{res.status(200).json(tasks)}).catch(err=>res.status(404).json({message:"No task with that id found!"}))
 })
+
 router.get('/byVolunteer/:id',authenticate, (req,res)=>{
   const id = req.params.id
   db('tasks').where('user_id', id).then(tasks=>{res.status(200).json(tasks)}).catch(err=>res.status(404).json({message:"No trips found for that volunteer"}))
 })
+
 router.put('/:id', authenticate, checkRole,(req,res)=>{
   const id = req.params.id
   db('tasks')
