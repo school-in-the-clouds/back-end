@@ -67,6 +67,7 @@ router.put('/:id',  authenticate,(req,res)=>{
       role: req.body.role,
       email: req.body.email,
       phone: req.body.phone
+      
     })
     .then(numUpdated=>{
       if(numUpdated!=0){

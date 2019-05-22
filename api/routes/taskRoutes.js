@@ -20,7 +20,7 @@ router.get('/:id',authenticate, (req,res)=>{
 
 router.get('/byVolunteer/:id',authenticate, (req,res)=>{
   const id = req.params.id
-  db('tasks').where('user_id', id).then(tasks=>{res.status(200).json(tasks)}).catch(err=>res.status(404).json({message:"No trips found for that volunteer"}))
+  db('tasks').where('user_id', id).then(tasks=>{res.status(200).json(tasks)}).catch(err=>res.status(404).json({message:"No tasks found for that volunteer"}))
 })
 
 router.put('/:id', authenticate, checkRole,(req,res)=>{
