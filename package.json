@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "server": "nodemon index.js",
-    "start": "node index.js"
+    "start": "node index.js",
+    "test": "jest"
   },
   "repository": "https://github.com/school-in-the-clouds/back-end.git",
   "author": "Brandon Allison <brandona8128@outlook.com>",
@@ -24,6 +25,7 @@
     "morgan": "^1.9.1",
     "nodemon": "^1.19.0",
     "pg": "^7.11.0",
-    "sqlite3": "^4.0.8"
+    "sqlite3": "^4.0.8",
+    "supertest": "^4.0.2"
   }
 }
