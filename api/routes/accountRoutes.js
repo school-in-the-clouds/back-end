@@ -46,6 +46,11 @@ router.get('/volunteer/:id',authenticate,  (req,res)=>{
   db('users').where('id', id).where('role', 'volunteer').first().then(users=>{res.status(200).json(users)}).catch(err=>{res.status(500).json({message:"Error trying to GET user!"})})
 })
 
+router.get('/volunteer/:country',authenticate,  (req,res)=>{
+  const country = req.params.country
+  db('users').where('country', country).where('role', 'volunteer').first().then(users=>{res.status(200).json(users)}).catch(err=>{res.status(500).json({message:"Error trying to GET user!"})})
+})
+
 router.get('/admin/:id',authenticate,  (req,res)=>{
     const id = req.params.id
     db('users').where('id', id).where('role', 'admin').first().then(users=>{res.status(200).json(users)}).catch(err=>{res.status(500).json({message:"Error trying to GET user!"})})

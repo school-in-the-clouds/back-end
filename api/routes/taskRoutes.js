@@ -30,6 +30,7 @@ router.put('/:id', authenticate, checkRole,(req,res)=>{
     .update({
       title: req.body.title,
       description: req.body.description,
+      task_completed: req.body.task_completed,
       user_id: req.body.user_id
     })
     .then(numUpdated=>{
