@@ -56,7 +56,6 @@ router.get('/admin/:id',authenticate,  (req,res)=>{
     db('users').where('id', id).where('role', 'admin').first().then(users=>{res.status(200).json(users)}).catch(err=>{res.status(500).json({message:"Error trying to GET user!"})})
   })
 
-
 router.put('/:id',  authenticate,(req,res)=>{
   console.log('in put')
   console.log(req.body)
