@@ -14,8 +14,6 @@ exports.up = function(knex, Promise) {
       tbl.integer('user_id')
         .references('id')
         .inTable('users')
-        
-  
     })
   };
   
