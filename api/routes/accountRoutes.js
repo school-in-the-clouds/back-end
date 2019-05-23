@@ -22,6 +22,11 @@ router.get('/', authenticate, (req,res)=>{
   db('users').then(users=>{res.status(200).json(users)}).catch(err=>{res.status(404).json({message:"No users found!"})})
 })
 
+router.get('/country/:country', authenticate, (req,res)=>{
+  const country = req.params.country
+  db('users').where('country', country).where('role', 'volunteer').then(users=>{res.status(200).json(users)}).catch(err=>{res.status(404).json({message:"No users found!"})})
+})
+
 router.get('/student/', authenticate, (req,res)=>{
   db('users').where('role', 'student').then(users=>{res.status(200).json(users)}).catch(err=>{res.status(404).json({message:"No users found!"})})
 })
@@ -46,10 +51,7 @@ router.get('/volunteer/:id',authenticate,  (req,res)=>{
   db('users').where('id', id).where('role', 'volunteer').first().then(users=>{res.status(200).json(users)}).catch(err=>{res.status(500).json({message:"Error trying to GET user!"})})
 })
 
-router.get('/volunteer/:country',authenticate,  (req,res)=>{
-  const country = req.params.country
-  db('users').where('country', country).where('role', 'volunteer').first().then(users=>{res.status(200).json(users)}).catch(err=>{res.status(500).json({message:"Error trying to GET user!"})})
-})
+
 
 router.get('/admin/:id',authenticate,  (req,res)=>{
     const id = req.params.id
@@ -70,6 +72,7 @@ router.put('/:id',  authenticate,(req,res)=>{
       name: req.body.name,
       role: req.body.role,
       email: req.body.email,
+      country: req.body.country,
       phone: req.body.phone
       
     })
