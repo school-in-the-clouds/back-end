@@ -6,7 +6,7 @@
   "scripts": {
     "server": "nodemon index.js",
     "start": "node index.js",
-    "test": "jest"
+    "test": "cross-env DB_ENV=testing jest --watch"
   },
   "repository": "https://github.com/school-in-the-clouds/back-end.git",
   "author": "Brandon Allison <brandona8128@outlook.com>",
@@ -15,6 +15,7 @@
     "axios": "^0.18.0",
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
+    "cross-env": "^5.2.0",
     "dotenv": "^8.0.0",
     "express": "^4.17.0",
     "faker": "^4.1.0",
