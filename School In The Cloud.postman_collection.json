@@ -1,0 +1,647 @@
+{
+	"info": {
+		"_postman_id": "f390fe1b-da0b-49bf-9b86-a3093cad84f2",
+		"name": "School In The Cloud",
+		"description": "School In the Cloud ",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Authorization",
+			"item": [
+				{
+					"name": "Registration",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"username\": \"TestUser\",\n\"password\": \"password\",\n\"country\": \"USA\",\n\"name\": \"John\",\n\"role\": \"volunteer\",\n\"email\": \"test@test.com\",\n\"phone\": \"1111111111\"\n}"
+						},
+						"url": {
+							"raw": "https://school-itc.herokuapp.com/api/accounts/register",
+							"protocol": "https",
+							"host": [
+								"school-itc",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"accounts",
+								"register"
+							]
+						},
+						"description": "Required body is: \nusername, password, name, role, email, country, phone"
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"username\": \"TestUser\",\n\"password\": \"password\"\n}"
+						},
+						"url": {
+							"raw": "https://school-itc.herokuapp.com/api/accounts/login",
+							"protocol": "https",
+							"host": [
+								"school-itc",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"accounts",
+								"login"
+							]
+						},
+						"description": "Login Endpoint with Required body of:\nusername and password. \nResponse includes:\nname, role, id, token\n"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Tasks",
+			"item": [
+				{
+					"name": "GET all tasks",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlRlc3RVc2VyMSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTU1ODYyNTkwMSwiZXhwIjoxNTU4NjI5NTAxLCJqdGkiOiIxMjM0NSJ9.sFQtAB-ZPMkI9Dus26gv61MwyfT9S0MZwo4iP2TfbA4",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://school-itc.herokuapp.com/api/tasks",
+							"protocol": "https",
+							"host": [
+								"school-itc",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"tasks"
+							]
+						},
+						"description": "Endpoint get's all created tasks, must have authorizaion token in header to return tasks."
+					},
+					"response": []
+				},
+				{
+					"name": "GET task by :id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlRlc3RVc2VyMSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTU1ODYyNTkwMSwiZXhwIjoxNTU4NjI5NTAxLCJqdGkiOiIxMjM0NSJ9.sFQtAB-ZPMkI9Dus26gv61MwyfT9S0MZwo4iP2TfbA4",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://school-itc.herokuapp.com/api/tasks/1",
+							"protocol": "https",
+							"host": [
+								"school-itc",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"tasks",
+								"1"
+							]
+						},
+						"description": "Endpoint gets specific tasks by id"
+					},
+					"response": []
+				},
+				{
+					"name": "GET task by volunteer ",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlRlc3RVc2VyMSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTU1ODYyNTkwMSwiZXhwIjoxNTU4NjI5NTAxLCJqdGkiOiIxMjM0NSJ9.sFQtAB-ZPMkI9Dus26gv61MwyfT9S0MZwo4iP2TfbA4",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://school-itc.herokuapp.com/api/tasks/byVolunteer/1",
+							"protocol": "https",
+							"host": [
+								"school-itc",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"tasks",
+								"byVolunteer",
+								"1"
+							]
+						},
+						"description": "Returns tasks assigned to a specific volunteer by the volunteer :id."
+					},
+					"response": []
+				},
+				{
+					"name": "Create new task",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlRlc3RVc2VyQWRtaW4iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE1NTg0NTk1NjYsImV4cCI6MTU1ODQ2MzE2NiwianRpIjoiMTIzNDUifQ.aQYrWQMge3Ki3xM2FBdhwfbb8WSZl27goGYOq_zesrE",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"title\": \"Meeting\",\n\"description\" : \"Meeting with UX designer\",\n\"user_id\" : \"1\"\n}"
+						},
+						"url": {
+							"raw": "https://school-itc.herokuapp.com/api/tasks",
+							"protocol": "https",
+							"host": [
+								"school-itc",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"tasks"
+							]
+						},
+						"description": "/api/tasks\n\nBody require: title, description, user_id of assigned volunteer.\n\nMust have admin account to create tasks.\n\ntask completed defaults to false "
+					},
+					"response": []
+				},
+				{
+					"name": "PUT (edit) task",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlRlc3RVc2VyQWRtaW4iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE1NTg0NTk1NjYsImV4cCI6MTU1ODQ2MzE2NiwianRpIjoiMTIzNDUifQ.aQYrWQMge3Ki3xM2FBdhwfbb8WSZl27goGYOq_zesrE",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"title\": \"Meeting rescheduled\",\n\"description\" : \"Meeting with UX designer\",\n\"user_id\" : \"1\"\n}"
+						},
+						"url": {
+							"raw": "https://school-itc.herokuapp.com/api/tasks/1",
+							"protocol": "https",
+							"host": [
+								"school-itc",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"tasks",
+								"1"
+							]
+						},
+						"description": "/api/tasks/:id"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete task ",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlRlc3RVc2VyQWRtaW4iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE1NTg0NTk1NjYsImV4cCI6MTU1ODQ2MzE2NiwianRpIjoiMTIzNDUifQ.aQYrWQMge3Ki3xM2FBdhwfbb8WSZl27goGYOq_zesrE",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://school-itc.herokuapp.com/api/tasks/1",
+							"protocol": "https",
+							"host": [
+								"school-itc",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"tasks",
+								"1"
+							]
+						},
+						"description": "/api/tasks/:id"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Get All Users",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlRlc3RVc2VyMSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTU1ODYyNTkwMSwiZXhwIjoxNTU4NjI5NTAxLCJqdGkiOiIxMjM0NSJ9.sFQtAB-ZPMkI9Dus26gv61MwyfT9S0MZwo4iP2TfbA4",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://school-itc.herokuapp.com/api/accounts",
+							"protocol": "https",
+							"host": [
+								"school-itc",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"accounts"
+							]
+						},
+						"description": "Requires Token to retrieve users"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Users By Role (volunteers)",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlRlc3RVc2VyMSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTU1ODYyNTkwMSwiZXhwIjoxNTU4NjI5NTAxLCJqdGkiOiIxMjM0NSJ9.sFQtAB-ZPMkI9Dus26gv61MwyfT9S0MZwo4iP2TfbA4",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://school-itc.herokuapp.com/api/accounts/volunteer",
+							"protocol": "https",
+							"host": [
+								"school-itc",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"accounts",
+								"volunteer"
+							]
+						},
+						"description": "/api/users/volunteers"
+					},
+					"response": []
+				},
+				{
+					"name": "Get users by role (Student)",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlRlc3RVc2VyMSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTU1ODYyNTkwMSwiZXhwIjoxNTU4NjI5NTAxLCJqdGkiOiIxMjM0NSJ9.sFQtAB-ZPMkI9Dus26gv61MwyfT9S0MZwo4iP2TfbA4",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://school-itc.herokuapp.com/api/accounts/student",
+							"protocol": "https",
+							"host": [
+								"school-itc",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"accounts",
+								"student"
+							]
+						},
+						"description": "/api/users/student"
+					},
+					"response": []
+				},
+				{
+					"name": "Get users by role (admin)",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlRlc3RVc2VyMSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTU1ODYyNTkwMSwiZXhwIjoxNTU4NjI5NTAxLCJqdGkiOiIxMjM0NSJ9.sFQtAB-ZPMkI9Dus26gv61MwyfT9S0MZwo4iP2TfbA4",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://school-itc.herokuapp.com/api/accounts/admin",
+							"protocol": "https",
+							"host": [
+								"school-itc",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"accounts",
+								"admin"
+							]
+						},
+						"description": "/api/users/admin"
+					},
+					"response": []
+				},
+				{
+					"name": "PUT request to change user information",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlRlc3RVc2VyIiwicm9sZSI6InZvbHVudGVlciIsImlhdCI6MTU1ODQ1NzEwMiwiZXhwIjoxNTU4NDYwNzAyLCJqdGkiOiIxMjM0NSJ9.Xs9WnNeHBloctpuZGImA_eg02cMtbqwRscVN91jdZSY",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"username\": \"TestUser11\",\n\"password\": \"password\",\n\"name\": \"John\",\n\"role\": \"volunteer\",\n\"email\": \"test@test.com\",\n\"phone\": \"123456789\"\n}"
+						},
+						"url": {
+							"raw": "https://school-itc.herokuapp.com/api/accounts/2",
+							"protocol": "https",
+							"host": [
+								"school-itc",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"accounts",
+								"2"
+							]
+						},
+						"description": "/api/users/:id"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete user by id",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlRlc3RVc2VyIiwicm9sZSI6InZvbHVudGVlciIsImlhdCI6MTU1ODQ1NzEwMiwiZXhwIjoxNTU4NDYwNzAyLCJqdGkiOiIxMjM0NSJ9.Xs9WnNeHBloctpuZGImA_eg02cMtbqwRscVN91jdZSY",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://school-itc.herokuapp.com/api/accounts/1",
+							"protocol": "https",
+							"host": [
+								"school-itc",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"accounts",
+								"1"
+							]
+						},
+						"description": "/api/accounts/:id"
+					},
+					"response": []
+				},
+				{
+					"name": "GET Volunteer By Country",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlRlc3RVc2VyMSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTU1ODYyNTkwMSwiZXhwIjoxNTU4NjI5NTAxLCJqdGkiOiIxMjM0NSJ9.sFQtAB-ZPMkI9Dus26gv61MwyfT9S0MZwo4iP2TfbA4",
+								"type": "text"
+							},
+							{
+								"key": "country",
+								"value": "Mexico",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://school-itc.herokuapp.com/api/accounts/country/Canada",
+							"protocol": "https",
+							"host": [
+								"school-itc",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"api",
+								"accounts",
+								"country",
+								"Canada"
+							]
+						},
+						"description": "/accounts/country/:country\n\nReturns a list of Volunteers by provided country"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Get Server Check",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://school-itc.herokuapp.com",
+					"protocol": "https",
+					"host": [
+						"school-itc",
+						"herokuapp",
+						"com"
+					]
+				},
+				"description": "Test hits the server to test it is running. "
+			},
+			"response": []
+		}
+	]
+}
